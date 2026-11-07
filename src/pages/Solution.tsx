@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import {
   Languages, Database, BarChart3, GitCompare, Microscope, FlaskConical,
-  LayoutDashboard, Rocket, Upload, FileSearch, Lightbulb, Users,
-  CircleDollarSign, AlertTriangle, TrendingUp, Clock, Smile, Frown, Minus,
+  LayoutDashboard, Upload, FileSearch, Lightbulb, Users,
+  CircleDollarSign, AlertTriangle, TrendingUp, Smile, Frown, Minus,
 } from 'lucide-react';
 import { useSeo } from '@/components/Seo';
 import { PageHeader } from '@/components/PageHeader';
 import { Reveal } from '@/components/Reveal';
 import { SectionHeading } from '@/components/SectionHeading';
+import { WindowDots } from '@/components/WindowDots';
 
 const toc = [
   { id: 'problem', label: 'The problem' },
@@ -62,7 +63,7 @@ const milestones = [
 
 export function Solution() {
   useSeo({
-    title: 'The Solution — Sentimo',
+    title: 'The Solution: Sentimo',
     description: 'How Sentimo solves multilingual feedback for small businesses in Pakistan: the problem, the solution, research, evaluation approach and product preview.',
     path: '/solution',
   });
@@ -101,7 +102,7 @@ export function Solution() {
             <div className="space-y-16 lg:space-y-24">
               {/* Problem */}
               <Anchor id="problem">
-                <SectionHeading eyebrow="The problem" title="Owners hear from customers in three languages — and read almost none of it" goldDetail />
+                <SectionHeading eyebrow="The problem" title="Owners hear from customers in three languages, and read almost none of it" goldDetail />
                 <div className="mt-8 grid gap-5 md:grid-cols-2">
                   <Reveal>
                     <div className="glass-card h-full p-6">
@@ -144,7 +145,7 @@ export function Solution() {
                 <div className="mt-8 space-y-4">
                   {[
                     { icon: Upload, title: 'Upload or connect feedback', body: 'Owners bring in reviews via CSV upload, Google reviews export, forms or manual entry.' },
-                    { icon: FileSearch, title: 'Sentimo reads and labels', body: 'The platform detects language, scores sentiment and tags topics — across Urdu, Roman Urdu and English.' },
+                    { icon: FileSearch, title: 'Sentimo reads and labels', body: 'The platform detects language, scores sentiment and tags topics, across Urdu, Roman Urdu and English.' },
                     { icon: Lightbulb, title: 'Summaries and themes surface', body: 'Owners see what customers like, what they complain about, and which topics come up most.' },
                     { icon: TrendingUp, title: 'Suggested actions appear', body: 'Each weekly summary includes suggested next steps tied to the most frequent issues.' },
                   ].map((s, i) => (
@@ -188,7 +189,7 @@ export function Solution() {
               {/* Benefits */}
               <Anchor id="benefits">
                 <SectionHeading eyebrow="Benefits" title="Design goals we are building toward" goldDetail />
-                <div className="mt-8 grid gap-5 md:grid-cols-2">
+                <div className="mt-8 grid auto-rows-fr gap-5 md:grid-cols-2">
                   {[
                     'Save owners hours every week by summarizing feedback automatically',
                     'Surface recurring issues so the same problems do not repeat',
@@ -197,8 +198,8 @@ export function Solution() {
                     'Keep the dashboard simple enough for any owner to use',
                     "Respect privacy: feedback stays the owner's data, never shared",
                   ].map((b, i) => (
-                    <Reveal key={b} delay={i * 0.05}>
-                      <div className="flex items-start gap-3 rounded-xl border border-line-600 bg-obsidian-800/50 p-4">
+                    <Reveal key={b} delay={i * 0.05} className="h-full">
+                      <div className="flex h-full items-start gap-3 rounded-xl border border-line-600 bg-obsidian-800/50 p-4">
                         <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-300" />
                         <p className="text-sm leading-relaxed text-text-body">{b}</p>
                       </div>
@@ -331,7 +332,7 @@ export function Solution() {
                   <Reveal delay={0.25}>
                     <div className="glass-card h-full p-6">
                       <h3 className="flex items-center gap-2 text-sm font-bold text-text-strong"><AlertTriangle className="h-4 w-4 text-text-muted" /> Key risks & mitigation</h3>
-                      <p className="mt-3 text-sm leading-relaxed text-text-body">Model accuracy on code-mixed text — mitigated by a labeled validation set and iterative evaluation. Adoption — mitigated by early access feedback.</p>
+                      <p className="mt-3 text-sm leading-relaxed text-text-body">Model accuracy on code-mixed text, mitigated by a labeled validation set and iterative evaluation. Adoption, mitigated by early access feedback.</p>
                     </div>
                   </Reveal>
                 </div>
@@ -420,14 +421,12 @@ function ScreenPreview({ index }: { index: number }) {
   const s = screens[index];
   const Icon = s.icon;
   return (
-    <Reveal delay={index * 0.08}>
-      <div className="glass-card overflow-hidden p-3">
+    <Reveal delay={index * 0.08} className="h-full">
+      <div className="glass-card flex h-full flex-col overflow-hidden p-3">
         <div className="flex items-center gap-2 px-1 pb-2">
-          <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
-          <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+          <WindowDots size="sm" />
         </div>
-        <div className="rounded-lg border border-line-600 bg-obsidian-800/60 p-4">
+        <div className="flex flex-1 flex-col rounded-lg border border-line-600 bg-obsidian-800/60 p-4">
           <div className="flex items-center gap-2">
             <Icon className="h-4 w-4 text-brand-300" />
             <h4 className="text-sm font-semibold text-text-strong">{s.title}</h4>
