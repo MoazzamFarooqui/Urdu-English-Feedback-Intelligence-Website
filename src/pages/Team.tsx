@@ -1,18 +1,19 @@
 import { useRef, useState } from 'react';
 import { toPng } from 'html-to-image';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X, Download, Phone, Mail, Globe, ArrowRight } from 'lucide-react';
+import { X, Download, ArrowRight } from 'lucide-react';
 import { useSeo } from '@/components/Seo';
 import { PageHeader } from '@/components/PageHeader';
 import { Reveal } from '@/components/Reveal';
 import { SectionHeading } from '@/components/SectionHeading';
+import { LogoIcon } from '@/components/Logo';
 import { team, responsibilityMatrix, company, contact } from '@/data/company';
 
 type Member = (typeof team)[number];
 
 export function Team() {
   useSeo({
-    title: 'Team — Sentimo Tech Solutions',
+    title: 'Team: Sentimo Tech Solutions',
     description: 'Meet the team behind Sentimo: product, NLP and platform leaders building Urdu-English feedback intelligence in Pakistan.',
     path: '/team',
   });
@@ -24,7 +25,7 @@ export function Team() {
       <PageHeader
         breadcrumb="Team"
         title={<>Three people, <span className="gradient-text">one platform</span></>}
-        intro="Product, data science and platform — each role covered by someone focused on it."
+        intro="Product, data science and platform, each role covered by someone focused on it."
       />
 
       {/* Profile cards */}
@@ -121,17 +122,47 @@ function Avatar({ initials, size = 'lg' }: { initials: string; size?: 'lg' | 'sm
   );
 }
 
+const CARD_GOLD = '#c2a35a';
+
 function BusinessCard({ member }: { member: Member }) {
   const frontRef = useRef<HTMLDivElement>(null);
+  const backRef = useRef<HTMLDivElement>(null);
   const [flipped, setFlipped] = useState(false);
 
   const download = async () => {
-    if (!frontRef.current) return;
+    if (!frontRef.current || !backRef.current) return;
     try {
-      const dataUrl = await toPng(frontRef.current, { quality: 0.95, backgroundColor: '#000000' });
+      const options = { quality: 0.95, backgroundColor: '#000000', pixelRatio: 2 };
+      // Capture the back without its 3D flip transform so the export is not mirrored.
+      const [frontUrl, backUrl] = await Promise.all([
+        toPng(frontRef.current, options),
+        toPng(backRef.current, { ...options, style: { transform: 'none' } }),
+      ]);
+
+      const loadImage = (src: string) =>
+        new Promise<HTMLImageElement>((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = src;
+        });
+
+      const [frontImg, backImg] = await Promise.all([loadImage(frontUrl), loadImage(backUrl)]);
+      const gap = 24;
+      const padding = 24;
+      const canvas = document.createElement('canvas');
+      canvas.width = frontImg.width + backImg.width + gap + padding * 2;
+      canvas.height = Math.max(frontImg.height, backImg.height) + padding * 2;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(frontImg, padding, padding);
+      ctx.drawImage(backImg, padding + frontImg.width + gap, padding);
+
       const link = document.createElement('a');
       link.download = `${member.name.replace(/\s+/g, '_')}_card.png`;
-      link.href = dataUrl;
+      link.href = canvas.toDataURL('image/png');
       link.click();
     } catch {
       // ignore
@@ -141,12 +172,12 @@ function BusinessCard({ member }: { member: Member }) {
   return (
     <div className="flex flex-col items-center gap-4">
       <div
-        className="group h-52 w-full max-w-[360px] cursor-pointer [perspective:1200px]"
+        className="group aspect-[1.75] w-full max-w-[380px] cursor-pointer [container-type:inline-size] [perspective:1200px]"
         onClick={() => setFlipped((v) => !v)}
         role="button"
         tabIndex={0}
         onKeyDown={(e) => { if (e.key === 'Enter') setFlipped((v) => !v); }}
-        aria-label={`${member.name} business card — click to flip`}
+        aria-label={`${member.name} business card, click to flip`}
       >
         <motion.div
           className="relative h-full w-full [transform-style:preserve-3d]"
@@ -158,31 +189,62 @@ function BusinessCard({ member }: { member: Member }) {
             ref={frontRef}
             className="absolute inset-0 [backface-visibility:hidden]"
           >
-            <div className="relative flex h-full w-full flex-col justify-between rounded-xl border border-line-600 bg-void-950 p-5">
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold-500/40 to-transparent" />
+            <div className="relative flex h-full w-full flex-col justify-between overflow-hidden rounded-xl border border-line-600 bg-black px-[5.3cqw] py-[4.3cqw]">
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-300">{company.name}</p>
-                <p className="mt-1 text-[10px] text-text-muted">{company.product}</p>
+                <div className="flex items-center gap-[1.8cqw]">
+                  <LogoIcon className="h-[7.6cqw] w-[7.6cqw] shrink-0 text-white" />
+                  <span className="whitespace-nowrap text-[3.5cqw] font-bold uppercase leading-none tracking-[0.14em] text-white">
+                    {company.name}
+                  </span>
+                </div>
+                <div className="mt-[3.8cqw] h-px w-[11cqw]" style={{ backgroundColor: CARD_GOLD }} />
+                <p
+                  className="mt-[2cqw] text-[2.35cqw] font-semibold uppercase leading-none tracking-[0.3em]"
+                  style={{ color: CARD_GOLD }}
+                >
+                  Engineered for understanding
+                </p>
               </div>
+
               <div>
-                <p className="text-lg font-bold text-text-strong">{member.name}</p>
-                <p className="mt-0.5 text-xs text-text-body">{member.designation}</p>
+                <p className="text-[6.6cqw] font-bold leading-tight text-white">{member.name}</p>
+                <p className="mt-[1cqw] text-[3.5cqw] leading-snug text-[#a3a3a3]">{member.designation}</p>
               </div>
-              <div className="flex items-center justify-between text-[10px] text-text-muted">
-                <span>{company.website}</span>
-                <span className="h-1 w-1 rounded-full bg-gold-300" />
+
+              <div className="flex items-end justify-between gap-[1.6cqw]">
+                <p className="whitespace-nowrap text-[2.35cqw] leading-none text-[#8a8a8a]">
+                  {company.email} <span className="mx-[0.8cqw] text-[#5c5c5c]">|</span> {contact.phone}{' '}
+                  <span className="mx-[0.8cqw] text-[#5c5c5c]">|</span> {company.website}
+                </p>
+                <span className="h-[1.6cqw] w-[1.6cqw] shrink-0 rounded-full" style={{ backgroundColor: CARD_GOLD }} />
               </div>
             </div>
           </div>
 
           {/* Back */}
-          <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-            <div className="relative flex h-full w-full flex-col justify-center gap-2 rounded-xl border border-line-600 bg-obsidian-800 p-5">
-              <p className="flex items-center gap-2 text-xs text-text-body"><Mail className="h-3.5 w-3.5 text-brand-300" /> {member.email}</p>
-              <p className="flex items-center gap-2 text-xs text-text-body"><Phone className="h-3.5 w-3.5 text-brand-300" /> {contact.phone}</p>
-              <p className="flex items-center gap-2 text-xs text-text-body"><Globe className="h-3.5 w-3.5 text-brand-300" /> {company.website}</p>
-              <p className="mt-2 text-[10px] text-text-muted">Click to flip back</p>
+          <div
+            ref={backRef}
+            className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+          >
+            <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl border border-line-600 bg-black">
+              <div className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[92%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#333333]" />
+              <div
+                className="pointer-events-none absolute left-1/2 top-1/2 aspect-square h-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full border"
+                style={{ borderColor: `rgba(194, 163, 90, 0.75)` }}
+              />
+
+              <div className="relative z-10 flex flex-col items-center">
+                <LogoIcon className="h-12 w-12 text-white" />
+                <p className="mt-5 pl-[0.45em] text-[11px] font-semibold uppercase leading-none tracking-[0.45em] text-white">
+                  Sentimo
+                </p>
+                <p
+                  className="mt-2 pl-[0.32em] text-[7px] font-semibold uppercase leading-none tracking-[0.32em]"
+                  style={{ color: CARD_GOLD }}
+                >
+                  We read the room
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>
