@@ -12,7 +12,7 @@ export const problems = [
   {
     icon: 'Languages',
     title: 'Mixed languages',
-    body: 'Reviews arrive in Urdu script, Roman Urdu and English — often in the same sentence. Most tools were not built for this.',
+    body: 'Reviews arrive in Urdu script, Roman Urdu and English, often in the same sentence. Most tools were not built for this.',
   },
   {
     icon: 'Clock',
@@ -22,7 +22,7 @@ export const problems = [
   {
     icon: 'Repeat',
     title: 'Same problems repeat',
-    body: 'Without a clear summary, the same complaints keep coming back — because no one saw the pattern.',
+    body: 'Without a clear summary, the same complaints keep coming back, because no one saw the pattern.',
   },
 ];
 
@@ -65,7 +65,7 @@ export const coreFeatures = [
     icon: 'Smile',
     title: 'Sentiment analysis',
     tag: 'MVP',
-    body: 'Each piece of feedback is labeled positive, negative or mixed — in all three languages.',
+    body: 'Each piece of feedback is labeled positive, negative or mixed, in all three languages.',
   },
   {
     icon: 'Tag',
@@ -188,7 +188,7 @@ export const objectives = [
 export const faqs = [
   {
     q: 'Which languages does Sentimo support?',
-    a: 'Sentimo is designed for Urdu (script), Roman Urdu and English — including feedback that mixes all three in one message.',
+    a: 'Sentimo is designed for Urdu (script), Roman Urdu and English, including feedback that mixes all three in one message.',
   },
   {
     q: 'How do I get early access?',
@@ -200,7 +200,7 @@ export const faqs = [
   },
   {
     q: 'Do I need any technical knowledge to use it?',
-    a: 'No. Sentimo is built for owners, not analysts. You upload feedback and read a clear summary — no data science background needed.',
+    a: 'No. Sentimo is built for owners, not analysts. You upload feedback and read a clear summary, no data science background needed.',
   },
   {
     q: 'Where is my feedback data stored?',

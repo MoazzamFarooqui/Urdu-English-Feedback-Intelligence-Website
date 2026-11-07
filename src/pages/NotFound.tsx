@@ -5,7 +5,7 @@ import { LogoMark } from '@/components/Logo';
 
 export function NotFound() {
   useSeo({
-    title: 'Page not found — Sentimo',
+    title: 'Page not found: Sentimo',
     description: 'The page you were looking for does not exist.',
     path: '/404',
   });

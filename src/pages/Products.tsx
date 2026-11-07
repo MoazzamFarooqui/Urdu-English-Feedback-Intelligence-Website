@@ -1,6 +1,6 @@
 import {
   Languages, Smile, Tag, LayoutDashboard, Sparkles, MessageCircle, Mic, Reply, Smartphone,
-  UtensilsCrossed, ShoppingBag, Stethoscope, Scissors, ArrowRight, Shield, Activity,
+  UtensilsCrossed, ShoppingBag, Stethoscope, Scissors, Shield, Activity,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSeo } from '@/components/Seo';
@@ -14,7 +14,7 @@ const customerIcons = { UtensilsCrossed, ShoppingBag, Stethoscope, Scissors };
 
 export function Products() {
   useSeo({
-    title: 'Products & Services — Sentimo',
+    title: 'Products & Services: Sentimo',
     description: "Sentimo's core features, roadmap, target customers, plans and platform architecture for Urdu-English feedback intelligence.",
     path: '/products',
   });
@@ -152,7 +152,7 @@ export function Products() {
               <div className="glass-card p-6">
                 <h3 className="text-base font-bold text-text-strong">Data flow</h3>
                 <p className="mt-3 text-sm leading-relaxed text-text-body">
-                  Feedback enters through uploads or exports, is cleaned and normalized — including Roman Urdu normalization — then passed to the NLP models. Results are stored and served to the dashboard through a REST API. Owners see sentiment, topics and a weekly summary without ever touching the raw pipeline.
+                  Feedback enters through uploads or exports, is cleaned and normalized, including Roman Urdu normalization, then passed to the NLP models. Results are stored and served to the dashboard through a REST API. Owners see sentiment, topics and a weekly summary without ever touching the raw pipeline.
                 </p>
               </div>
               <div className="glass-card p-6">

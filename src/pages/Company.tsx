@@ -22,7 +22,7 @@ const timeline = [
 
 export function Company() {
   useSeo({
-    title: 'About — Sentimo Tech Solutions',
+    title: 'About: Sentimo Tech Solutions',
     description: 'Sentimo Tech Solutions is a Pakistani software company building Sentimo, an Urdu-English feedback intelligence platform for small businesses.',
     path: '/company',
   });
@@ -32,7 +32,7 @@ export function Company() {
       <PageHeader
         breadcrumb="Company"
         title={<>A Pakistani software company built around <span className="gradient-text">language and clarity</span></>}
-        intro="We build Sentimo — an Urdu-English feedback intelligence platform — for the small businesses that power Pakistan's economy."
+        intro="We build Sentimo, an Urdu-English feedback intelligence platform, for the small businesses that power Pakistan's economy."
       />
 
       {/* Profile */}
@@ -42,7 +42,7 @@ export function Company() {
             <Reveal>
               <h2 className="text-2xl font-bold text-text-strong">Company profile</h2>
               <p className="mt-4 text-pretty leading-relaxed text-text-body">
-                {company.name} builds {company.product}, a feedback intelligence platform designed for the way customers in Pakistan actually communicate. Reviews and messages arrive in Urdu script, Roman Urdu and English — often mixed in a single sentence. {company.product} reads all three and turns them into clear summaries and actions for owners.
+                {company.name} builds {company.product}, a feedback intelligence platform designed for the way customers in Pakistan actually communicate. Reviews and messages arrive in Urdu script, Roman Urdu and English, often mixed in a single sentence. {company.product} reads all three and turns them into clear summaries and actions for owners.
               </p>
               <p className="mt-4 text-pretty leading-relaxed text-text-body">
                 We focus on small and medium businesses: restaurants, online sellers, clinics and salons. These owners hear from customers every day, but rarely have the time or the tools to understand what all that feedback is telling them.
@@ -92,11 +92,11 @@ export function Company() {
       {/* Why we exist */}
       <section className="border-t border-line-600 bg-obsidian-900 section-pad">
         <div className="shell max-w-3xl">
-          <SectionHeading eyebrow="Why we exist" title="The same complaints kept coming back — and no one could see the pattern" goldDetail />
+          <SectionHeading eyebrow="Why we exist" title="The same complaints kept coming back, and no one could see the pattern" goldDetail />
           <Reveal delay={0.08}>
             <div className="mt-6 space-y-4 text-pretty leading-relaxed text-text-body">
               <p>
-                Small-business owners in Pakistan hear from customers constantly. A restaurant gets a Google review in Roman Urdu, a WhatsApp message in English, and a comment in Urdu script — sometimes all three in one afternoon.
+                Small-business owners in Pakistan hear from customers constantly. A restaurant gets a Google review in Roman Urdu, a WhatsApp message in English, and a comment in Urdu script, sometimes all three in one afternoon.
               </p>
               <p>
                 Reading each one by hand takes time most owners do not have. So feedback piles up, unread. The same problems repeat, because no one ever saw them clearly in the first place.

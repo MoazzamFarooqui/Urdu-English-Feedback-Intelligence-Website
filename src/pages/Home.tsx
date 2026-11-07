@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import {
   Languages, Clock, Repeat, UtensilsCrossed, ShoppingBag, Stethoscope, Scissors,
   UserRound, Zap, Target, ArrowRight, Sparkles,
@@ -15,7 +14,7 @@ const iconMap = { Languages, Clock, Repeat, UtensilsCrossed, ShoppingBag, Stetho
 
 export function Home() {
   useSeo({
-    title: 'Sentimo — Urdu-English Feedback Intelligence',
+    title: 'Sentimo: Urdu-English Feedback Intelligence',
     description: 'Sentimo turns mixed Urdu, Roman Urdu and English feedback into clear insight for small businesses in Pakistan. Understand every customer, in every language they speak.',
     path: '/',
   });
@@ -42,7 +41,7 @@ export function Home() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-text-body">
-                {company.product} reads feedback in Urdu, Roman Urdu and English — then turns it into clear summaries and actions for small-business owners.
+                {company.product} reads feedback in Urdu, Roman Urdu and English, then turns it into clear summaries and actions for small-business owners.
               </p>
             </Reveal>
             <Reveal delay={0.18}>

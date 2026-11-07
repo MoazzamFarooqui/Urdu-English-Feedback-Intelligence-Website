@@ -9,7 +9,7 @@ const valueIcons = { Languages, HandHeart, ShieldCheck, Sparkles };
 
 export function Vision() {
   useSeo({
-    title: 'Vision, Mission & Objectives — Sentimo',
+    title: 'Vision, Mission & Objectives: Sentimo',
     description: "Sentimo's vision, mission, measurable objectives and core values for building Urdu-English feedback intelligence for Pakistani small businesses.",
     path: '/vision',
   });
@@ -32,7 +32,7 @@ export function Vision() {
               </div>
               <h2 className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-300">Vision</h2>
               <p className="mt-3 text-pretty text-2xl font-bold leading-snug text-text-strong">
-                A Pakistan where every small-business owner can understand every customer voice — in any language it arrives in.
+                A Pakistan where every small-business owner can understand every customer voice, in any language it arrives in.
               </p>
             </div>
           </Reveal>
@@ -43,7 +43,7 @@ export function Vision() {
               </div>
               <h2 className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-text-muted">Mission</h2>
               <p className="mt-3 text-pretty text-2xl font-bold leading-snug text-text-strong">
-                Build feedback intelligence that reads Urdu, Roman Urdu and English — and turns it into clear actions for owners.
+                Build feedback intelligence that reads Urdu, Roman Urdu and English, and turns it into clear actions for owners.
               </p>
             </div>
           </Reveal>
@@ -56,7 +56,7 @@ export function Vision() {
           <SectionHeading
             eyebrow="Measurable objectives"
             title="How we measure progress"
-            body="Each objective has a metric, a target and a timeframe. These are goals we are working toward — not results we claim today."
+            body="Each objective has a metric, a target and a timeframe. These are goals we are working toward, not results we claim today."
             goldDetail
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

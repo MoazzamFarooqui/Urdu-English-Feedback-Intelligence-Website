@@ -49,7 +49,7 @@ export const team = [
     name: 'Falak Naz',
     designation: 'Chief Data Officer (CDO) & Lead NLP Engineer',
     initials: 'FN',
-    bio: 'Builds the language understanding at the core of Sentimo — from data to trained models.',
+    bio: 'Builds the language understanding at the core of Sentimo, from data to trained models.',
     skills: ['NLP', 'Sentiment analysis', 'Topic modeling', 'Data labeling', 'Evaluation metrics', 'Python'],
     responsibilities: [
       'Data collection and dataset preparation',

@@ -3,7 +3,7 @@ import { Mail, MapPin, Phone, Send, CheckCircle2, Loader2, ChevronDown } from 'l
 import { useSeo } from '@/components/Seo';
 import { PageHeader } from '@/components/PageHeader';
 import { Reveal } from '@/components/Reveal';
-import { contact, company } from '@/data/company';
+import { contact } from '@/data/company';
 import { faqs } from '@/data/content';
 
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
@@ -18,7 +18,7 @@ const businessTypes = [
 
 export function Contact() {
   useSeo({
-    title: 'Contact — Sentimo Tech Solutions',
+    title: 'Contact: Sentimo Tech Solutions',
     description: 'Get in touch with the Sentimo team to join early access or ask about Urdu-English feedback intelligence for your business.',
     path: '/contact',
   });

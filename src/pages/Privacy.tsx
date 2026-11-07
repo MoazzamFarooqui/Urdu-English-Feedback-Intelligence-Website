@@ -5,7 +5,7 @@ import { company } from '@/data/company';
 
 export function Privacy() {
   useSeo({
-    title: 'Privacy Policy — Sentimo Tech Solutions',
+    title: 'Privacy Policy: Sentimo Tech Solutions',
     description: 'How Sentimo Tech Solutions handles your data and feedback.',
     path: '/privacy',
   });
@@ -44,7 +44,7 @@ export function Privacy() {
 
 export function Terms() {
   useSeo({
-    title: 'Terms — Sentimo Tech Solutions',
+    title: 'Terms: Sentimo Tech Solutions',
     description: 'Terms of use for the Sentimo website and platform.',
     path: '/terms',
   });
