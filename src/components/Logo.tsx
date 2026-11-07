@@ -3,20 +3,35 @@ interface LogoProps {
   showWordmark?: boolean;
 }
 
+export function LogoIcon({ className = 'h-8 w-8' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M16 8H48C53.5228 8 58 12.4772 58 18V40C58 45.5228 53.5228 50 48 50H26L16 60V50C10.4772 50 6 45.5228 6 40V18C6 12.4772 10.4772 8 16 8Z"
+        stroke="currentColor"
+        strokeWidth="3.4"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M20 26H29M35 26H44M22 34Q32 42 42 34"
+        stroke="currentColor"
+        strokeWidth="3.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export function LogoMark({ className = 'h-8 w-8', showWordmark = true }: LogoProps) {
   return (
     <span className="flex items-center gap-2.5">
-      <svg className={className} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path
-          d="M10 14C10 11.7909 11.7909 10 14 10H50C52.2091 10 54 11.7909 54 14V38C54 40.2091 52.2091 42 50 42H30L18 54V42H14C11.7909 42 10 40.2091 10 38V14Z"
-          stroke="#FFFFFF"
-          strokeWidth="3.5"
-          strokeLinejoin="round"
-        />
-        <path d="M20 22H26M30 28H40M44 22H50" stroke="#FFFFFF" strokeWidth="3.5" strokeLinecap="round" />
-        <circle cx="24" cy="22" r="2" fill="#FFFFFF" />
-        <circle cx="40" cy="22" r="2" fill="#FFFFFF" />
-      </svg>
+      <LogoIcon className={`${className} text-white`} />
       {showWordmark && (
         <span className="text-lg font-extrabold tracking-tight text-text-strong">
           Sentimo
