@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Smile, Frown, Minus, TrendingUp, TrendingDown } from 'lucide-react';
+import { WindowDots } from './WindowDots';
 import { sampleReviews } from '@/data/content';
 
 const sentimentStyle = {
@@ -13,10 +14,8 @@ export function DashboardMockup() {
     <div className="glass-card overflow-hidden p-3 sm:p-4">
       {/* Browser chrome */}
       <div className="flex items-center gap-2 px-2 pb-3">
-        <span className="h-3 w-3 rounded-full bg-[#FF5F57]" />
-        <span className="h-3 w-3 rounded-full bg-[#FEBC2E]" />
-        <span className="h-3 w-3 rounded-full bg-[#28C840]" />
-        <div className="ml-3 flex-1 truncate rounded-md bg-obsidian-700 px-3 py-1 text-xs text-text-muted">
+        <WindowDots />
+        <div className="ml-1 flex-1 truncate rounded-md bg-obsidian-700 px-3 py-1 text-xs text-text-muted">
           app.sentimo.example/dashboard
         </div>
       </div>
